@@ -26,12 +26,7 @@ class TinyTypist {
         return this.guessingWord;
     }
     
-    guess(letter: string) {
-
-        console.log(letter);
-        console.log(this.guessingIndex);
-        console.log(this.word);
-        console.log(this.guessingWord);        
+    guess(letter: string) {      
 
         if (this.guessingIndex > this.word.length - 1)
             return true;

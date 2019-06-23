@@ -36,6 +36,17 @@ button,
     outline:none;    
 }
 
+.button.category:focus, 
+ button.category:focus,
+.button.category:hover, 
+ button.category:hover{
+    border: 2px solid rgba(241, 123, 139, 0.8);
+}
+
+.selected{
+    border: 2px solid rgba(241, 123, 139, 0.8);  
+}
+
 #colors{    
     position: fixed;    
     right: 1rem;
@@ -44,6 +55,17 @@ button,
 #categories{    
     position: fixed;    
     left: 1rem;
+}
+
+#picture{
+    height: 200px;
+}
+
+.picture-content{
+    width: auto;
+    height: 200px;
+    filter: alpha(opacity=80);
+
 }
 
 .side-button {
@@ -120,17 +142,17 @@ button,
 
 /* categories */
 
-.animals{
+#animals{
     background: url('./../images/animals.jpg') no-repeat top left;
     background-size: 100%;
 }
 
-.people{
+#people{
     background: url('./../images/people.jpg') no-repeat top left;
     background-size: 100%;
 }
 
-.toys{
+#toys{
     background: url('./../images/toys.jpg') no-repeat top left;
     background-size: 100%;
 }
