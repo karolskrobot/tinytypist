@@ -19,7 +19,7 @@ const updatePuzzleWord = () => renderPuzzleWord(tinyTypist.guessingWord, 'guessi
 
 const initializeGame = async () => {
     words = new Words();
-    addCategoryButtonListeners();
+    addButtonListeners();
     await newWord();
 };
 
@@ -47,7 +47,7 @@ const processGuess = (letter: string) => {
     updatePuzzleWord();
 };
 
-const addCategoryButtonListeners = () => {
+const addButtonListeners = () => {
     Array.from(document.querySelectorAll('.category')).forEach(el => {
         el.addEventListener('click', e => {
             cleanBorders();
@@ -57,7 +57,13 @@ const addCategoryButtonListeners = () => {
             target.classList.add('selected');
         })
     })
+
+    document.getElementById('hint').addEventListener('click', () => {
+        document.getElementById('word').classList.toggle('d-none');
+    })
 };
+
+
 
 const cleanBorders = () => {
     Array.from(document.querySelectorAll('.category')).forEach(el => {

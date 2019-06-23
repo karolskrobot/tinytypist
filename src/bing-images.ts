@@ -17,9 +17,8 @@ async function getBingImageUrl(word: string, category: string) {
     };
     
     const url = sendQuery()
-        .then(response => {
-            debugger
-            const max = 50
+        .then(response => {            
+            const max = 30
             const min = 0
             let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
             return response.value[randomNumber].contentUrl;

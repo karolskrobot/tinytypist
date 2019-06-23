@@ -58,12 +58,25 @@ button,
 }
 
 #picture{
-    height: 200px;
+    height: 300px;
+}
+
+#hint{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 7rem;
+    height: 7rem;
+    font-size: 4rem;
+    border-radius: 50%;
+    vertical-align: middle;
+    background-color: rgba(241, 123, 139, 0.8);
+    color: white;
 }
 
 .picture-content{
     width: auto;
-    height: 200px;
+    height: 300px;
     filter: alpha(opacity=80);
 
 }
@@ -90,6 +103,10 @@ button,
     text-transform: uppercase;
     vertical-align: text-top;
     text-align: center;
+}
+
+#word-container{
+    height: 6.7rem;
 }
 
 .letter-span-underline {
