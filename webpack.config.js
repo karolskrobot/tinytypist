@@ -1,28 +1,29 @@
 const path = require('path');
 
 module.exports = {
-    entry: ['babel-polyfill',
-        './src/index.js'
-    ],
+    entry: "./src/index.ts",
     output: {
         path: path.resolve(__dirname, 'public/scripts'),
         filename: 'bundle.js'
     },
+    devtool: "source-map",
     module: {
         rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['env']
-                }
+                test: /\.tsx?$/,
+                loader: "awesome-typescript-loader"
+            },
+            {
+                test: /\.js$/,
+                use: ["source-map-loader"],
+                enforce: "pre"
             }
-        }]
+        ]
+    },
+    resolve: {
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
         publicPath: '/scripts/'
-    },
-    devtool: 'source-map'
+    }
 };
