@@ -21,7 +21,7 @@ main {
     height: 100%;
     padding: 1rem 0;
     margin: 0 auto;    
-    padding-top: 120px;    
+    padding-top: 4rem;    
     background-color: #fff7e8;
 }
 
@@ -52,15 +52,17 @@ button,
 #colors{    
     position: fixed;    
     right: 1rem;
+    top: 3rem;
 }
 
 #categories{    
     position: fixed;    
     left: 1rem;
+    top: 3rem;
 }
 
 #picture{
-    height: 300px;
+    height: 400px;
 }
 
 #hint{
@@ -78,7 +80,7 @@ button,
 
 .picture-content{
     width: auto;
-    height: 300px;
+    height: 400px;
     filter: alpha(opacity=80);
 
 }
@@ -108,6 +110,7 @@ button,
 }
 
 #word-container{
+    margin-top: 3rem;
     height: 6.7rem;
 }
 
@@ -128,50 +131,50 @@ button,
 /* colors */
 
 .pink {
-    background-color: rgb(241, 123, 139);
+    background-color: rgba(241, 123, 139, 0.8);
 }
 
 .blue {
-    background-color: rgb(44, 83, 255);
+    background-color: rgba(44, 83, 255, 0.8);
 }
 
 .green {
-    background-color: rgb(14, 124, 0);
+    background-color: rgba(14, 124, 0, 0.8);
 }
 
 .orange {
-    background-color: rgb(255, 157, 28);
+    background-color: rgba(255, 157, 28, 0.8);
 }
 
 .yellow {
-    background-color: rgb(255, 239, 17);
+    background-color: rgba(255, 239, 17, 0.8);
 }
 
 .brown {
-    background-color: rgb(109, 45, 8);
+    background-color: rgba(109, 45, 8, 0.8);
 }
 
 .red {
-    background-color: rgb(233, 25, 25);
+    background-color: rgba(233, 25, 25, 0.8);
 }
 
 .purple {
-    background-color: rgb(145, 32, 107);
+    background-color: rgba(145, 32, 107, 0.8);
 }
 
 /* categories */
 
-// #animals{
-//     background: url('./images/animals.jpg') no-repeat top left;
-//     background-size: 100%;
-// }
+#animals{
+    background: url('../images/animals.jpg') no-repeat top left;
+    background-size: 100%;
+}
 
-// #people{
-//     background: url('./images/people.jpg') no-repeat top left;
-//     background-size: 100%;
-// }
+#people{
+    background: url('../images/people.jpg') no-repeat top left;
+    background-size: 100%;
+}
 
-// #toys{
-//     background: url('./images/toys.jpg') no-repeat top left;
-//     background-size: 100%;
-// }
+#toys{
+    background: url('../images/toys.jpg') no-repeat top left;
+    background-size: 100%;
+}
