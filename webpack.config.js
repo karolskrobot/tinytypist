@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: "./src/index.ts",
@@ -14,8 +15,15 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use: ["source-map-loader"],
-                enforce: "pre"
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            },
+            {
+                test: /\.(scss|sass|css)$/,
+                exclude: /node_modules/,
+                use:['style-loader','css-loader', 'sass-loader']
             }
         ]
     },
@@ -25,5 +33,13 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
         publicPath: '/scripts/'
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'style.css',
+        })
+    ],
+    node: {
+        fs: "empty"
     }
 };
