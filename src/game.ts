@@ -1,8 +1,8 @@
-import TinyTypist from './tinytypist';
+import {TinyTypist, HintState }from './tinytypist';
 import Words from './locales/words';
-import {
-    renderWord,
+import {    
     renderPuzzleWord,
+    renderHintLetter,
     clearAll,
     renderImage
 } from './renders';
@@ -14,7 +14,7 @@ import getBingImageUrl from './bing-images';
 let tinyTypist: TinyTypist;
 let words: Words;
 
-const updateWord = () => renderWord(tinyTypist.word, 'word', ['letter-span']);
+const updateHintLetter = () => renderHintLetter([tinyTypist.guessingLetter], 'hint-letter-container', ['letter-span']);
 const updatePuzzleWord = () => renderPuzzleWord(tinyTypist.guessingWord, 'guessing', ['letter-span', 'letter-span-underline']);
 
 const initializeGame = async () => {
@@ -26,8 +26,7 @@ const initializeGame = async () => {
 const newWord = async () => {
     const word = words.getWord()
     tinyTypist = new TinyTypist(word);
-    clearAll();
-    updateWord();
+    clearAll();    
     updatePuzzleWord();
     renderImage('picture', await getBingImageUrl(word, words.categoryName));
 };
@@ -59,11 +58,18 @@ const addButtonListeners = () => {
     })
 
     document.getElementById('hint').addEventListener('click', () => {
-        document.getElementById('word').classList.toggle('d-none');
+        if (tinyTypist.hintState === HintState.First || tinyTypist.hintState === HintState.SecondShown) {
+            tinyTypist.getAudioHint()
+
+            if(tinyTypist.hintState === HintState.First)
+                tinyTypist.hintState = HintState.Second
+        }
+        else if (tinyTypist.hintState === HintState.Second) {
+            updateHintLetter();
+            tinyTypist.hintState = HintState.SecondShown;
+        }
     })
 };
-
-
 
 const cleanBorders = () => {
     Array.from(document.querySelectorAll('.category')).forEach(el => {

@@ -21,6 +21,15 @@ const renderPuzzleWord = (
     renderWord(wordArray, divName, classes);
 };
 
+const renderHintLetter = (
+    wordArray: string[],
+    divName: string,
+    classes: string[]
+) => {
+    clearDivs(['hint-letter-container']);
+    renderWord(wordArray, divName, classes);
+};
+
 const renderImage = (containerId: string, url: string) => {
     clearDivs[containerId];
     let img = new Image();
@@ -29,4 +38,4 @@ const renderImage = (containerId: string, url: string) => {
     document.getElementById(containerId).appendChild(img);
 };
 
-export { clearAll, renderWord, renderPuzzleWord, renderImage };
+export { clearAll, renderHintLetter, renderPuzzleWord, renderImage };

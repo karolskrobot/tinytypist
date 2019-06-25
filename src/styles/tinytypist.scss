@@ -1,103 +1,112 @@
-html,
-body {    
-    background-color: #fffbf1;    
-    color: rgb(255, 137, 137);
-    text-shadow: 0 .05rem .1rem rgba(156, 156, 156, 0.5);
-    height:100%; 
-    margin:0; 
-    padding:0;
-}
+$pink: rgba(241, 123, 139, 0.8);
+$blue: rgba(44, 83, 255, 0.8);
+$green: rgba(14, 124, 0, 0.8);
+$orange: rgba(255, 157, 28, 0.8);
+$yellow: rgba(255, 239, 17, 0.8);
+$brown: rgba(109, 45, 8, 0.8);
+$red: rgba(233, 25, 25, 0.8);
+$purple: rgba(145, 32, 107, 0.8);
 
-a,
-a:active,
-a:hover {
-    color: #fff;
+$base-color: $pink;
+$background-color: lighten($base-color, 30%);
+$deep-background-color: lighten($base-color, 20%);
+$base-darker: darken($base-color, 5%);
+$shadow: rgba($base-color, .5);
+
+html,
+body {
+    background-color: $deep-background-color;
+    color: $base-color;
+    text-shadow: 0 0.05rem 0.1rem $shadow;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 main {
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
+    width: 79%;
     height: 100%;
-    padding: 1rem 0;
-    margin: 0 auto;    
-    padding-top: 4rem;    
-    background-color: #fff7e8;
+    padding: 0;
+    margin: 0 auto;
+    padding-top: 8%;
+    background-color: $background-color;
 }
 
 button,
-.button:active, 
- button:active,
-.button:focus, 
- button:focus,
-.button:hover, 
- button:hover{
-    border:none;
-    outline:none;    
+.button:active,
+button:active,
+.button:focus,
+button:focus,
+.button:hover,
+button:hover {
+    border: none;
+    outline: none;
 }
 
-.button.category:focus, 
- button.category:focus,
-.button.category:hover, 
- button.category:hover{
+.button.category:focus,
+button.category:focus,
+.button.category:hover,
+button.category:hover {
     border: 2px solid;
-    border-color: rgb(241, 123, 139);
+    border-color: $base-color;
 }
 
-.selected{
-    border: 2px solid; 
-    border-color: rgb(241, 123, 139);  
+.selected {
+    border: 2px solid;
+    border-color: $base-color;
 }
 
-#colors{    
-    position: fixed;    
-    right: 1rem;
-    top: 3rem;
-}
-
-#categories{    
-    position: fixed;    
-    left: 1rem;
-    top: 3rem;
-}
-
-#picture{
-    height: 400px;
-}
-
-#hint{
+#colors {
     position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    right: 2%;
+    top: 6%;
+}
+
+#categories {
+    position: fixed;
+    left: 2%;
+    top: 6%;
+}
+
+#picture {
+    height: 18rem;
+}
+
+.picture-content {
+    width: auto;
+    height: 20rem;
+    filter: alpha(opacity=80);
+}
+
+#hint {
+    position: fixed;
+    bottom: 2%;
+    left: 1%;
     width: 7rem;
     height: 7rem;
     font-size: 4rem;
     border-radius: 50%;
     vertical-align: middle;
-    background-color: rgb(241, 123, 139);
+    background-color: $base-color;
+    border: 1rem solid $base-darker;
     color: white;
 }
 
-.picture-content{
-    width: auto;
-    height: 400px;
-    filter: alpha(opacity=80);
-
-}
-
 .side-button {
-    height: 4rem;    
-    width: 4rem; 
-    margin: 0.5rem;   
+    height: 5rem;
+    width: 5em;
+    margin: 0.5rem 1rem 0 1rem;
     border-radius: 10px;
 }
 
 /* words */
-#guessing{
+#guessing {
     margin-top: 3rem;
 }
 
-.letter-span {    
+.letter-span {
     display: inline-block;
     font-size: 6.5rem;
     height: 6.5rem;
@@ -109,13 +118,13 @@ button,
     text-align: center;
 }
 
-#word-container{
+#hint-letter-container {
     margin-top: 3rem;
     height: 6.7rem;
 }
 
 .letter-span-underline {
-    border-bottom: 2px solid rgb(241, 123, 139);    
+    border-bottom: 2px solid $base-color;    
 }
 
 /* media queries */
@@ -130,51 +139,51 @@ button,
 
 /* colors */
 
-.pink {
-    background-color: rgba(241, 123, 139, 0.8);
+#pink {
+    background-color: $pink;    
 }
 
-.blue {
-    background-color: rgba(44, 83, 255, 0.8);
+#blue {
+    background-color: $blue;
 }
 
-.green {
-    background-color: rgba(14, 124, 0, 0.8);
+#green {
+    background-color: $green;
 }
 
-.orange {
-    background-color: rgba(255, 157, 28, 0.8);
+#orange {
+    background-color: $orange;
 }
 
-.yellow {
-    background-color: rgba(255, 239, 17, 0.8);
+#yellow {
+    background-color: $yellow;
 }
 
-.brown {
-    background-color: rgba(109, 45, 8, 0.8);
+#brown {
+    background-color: $brown;
 }
 
-.red {
-    background-color: rgba(233, 25, 25, 0.8);
+#red {
+    background-color: $red;
 }
 
-.purple {
-    background-color: rgba(145, 32, 107, 0.8);
+#purple {
+    background-color: $purple;
 }
 
 /* categories */
 
-#animals{
+#animals {
     background: url('../images/animals.jpg') no-repeat top left;
     background-size: 100%;
 }
 
-#people{
+#people {
     background: url('../images/people.jpg') no-repeat top left;
     background-size: 100%;
 }
 
-#toys{
+#toys {
     background: url('../images/toys.jpg') no-repeat top left;
     background-size: 100%;
 }

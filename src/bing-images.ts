@@ -6,11 +6,11 @@ const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesC
 
 async function getBingImageUrl(word: string, category: string) {
     
-    let serviceKey = bingApiKey;    
-    let searchTerm = `${category}+${word}+drawing+transparent+background`;
+    const serviceKey = bingApiKey;    
+    const searchTerm = `$${word}+${category}+drawing+transparent+background`;
    
-    let credentials = new CognitiveServicesCredentials(serviceKey);
-    let imageSearchApiClient = new ImageSearchAPIClient(credentials);
+    const credentials = new CognitiveServicesCredentials(serviceKey);
+    const imageSearchApiClient = new ImageSearchAPIClient(credentials);
 
     const sendQuery = async () => {
         return await imageSearchApiClient.imagesOperations.search(searchTerm);
@@ -20,7 +20,7 @@ async function getBingImageUrl(word: string, category: string) {
         .then(response => {            
             const max = 30
             const min = 0
-            let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
             return response.value[randomNumber].contentUrl;
         })
         .catch(err => console.log(err));

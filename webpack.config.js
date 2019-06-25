@@ -32,12 +32,26 @@ module.exports = {
                         options: {
                             name: '[name].[ext]',                            
                             outputPath: '../images/',
-                            publicPath: 'images/',
+                            publicPath: './images/',
                             useRelativePaths: true
                         }
                     }
                 ]
-            },
+            }, 
+            {
+                test: /\.(mp3|wav)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',                            
+                            outputPath: '../audio/',
+                            publicPath: './audio/',
+                            useRelativePaths: true
+                        }
+                    }
+                ]
+            }, 
         ]
     },
     resolve: {
