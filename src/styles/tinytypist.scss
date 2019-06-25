@@ -48,7 +48,12 @@ button:hover {
 .button.category:focus,
 button.category:focus,
 .button.category:hover,
-button.category:hover {
+button.category:hover 
+.button.color:focus,
+button.color:focus,
+.button.color:hover,
+button.color:hover 
+{
     border: 2px solid;
     border-color: $base-color;
 }

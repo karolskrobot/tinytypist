@@ -4,7 +4,8 @@ import {
     renderPuzzleWord,
     renderHintLetter,
     clearAll,
-    renderImage
+    renderImage,
+    setTheme
 } from './renders';
 import {
     lettersEn
@@ -49,11 +50,20 @@ const processGuess = (letter: string) => {
 const addButtonListeners = () => {
     Array.from(document.querySelectorAll('.category')).forEach(el => {
         el.addEventListener('click', e => {
-            cleanBorders();
+            cleanBorders('.category');
             const target = e.target as Element;
             words.setCategory(target.id);
             newWord();
             target.classList.add('selected');
+        })
+    })
+
+    Array.from(document.querySelectorAll('.color')).forEach(el => {
+        el.addEventListener('click', e => {
+            cleanBorders('.color');
+            const target = e.target as Element;
+            target.classList.add('selected');
+            setTheme(target.id);            
         })
     })
 
@@ -71,8 +81,8 @@ const addButtonListeners = () => {
     })
 };
 
-const cleanBorders = () => {
-    Array.from(document.querySelectorAll('.category')).forEach(el => {
+const cleanBorders = (buttonClass: string) => {
+    Array.from(document.querySelectorAll(buttonClass)).forEach(el => {
         el.classList.remove('selected');        
     })
 };

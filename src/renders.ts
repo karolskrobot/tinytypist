@@ -38,4 +38,9 @@ const renderImage = (containerId: string, url: string) => {
     document.getElementById(containerId).appendChild(img);
 };
 
-export { clearAll, renderHintLetter, renderPuzzleWord, renderImage };
+const setTheme = (colorName: string) => {
+    clearDivs(['color-variable-holder']);
+    addElement('span', '', 'color-variable-holder', colorName, [])    
+}
+
+export { clearAll, renderHintLetter, renderPuzzleWord, renderImage, setTheme };

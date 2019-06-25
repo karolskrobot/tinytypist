@@ -7,7 +7,7 @@ const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesC
 async function getBingImageUrl(word: string, category: string) {
     
     const serviceKey = bingApiKey;    
-    const searchTerm = `$${word}+${category}+drawing+transparent+background`;
+    const searchTerm = `$${word}+transparent+background`;
    
     const credentials = new CognitiveServicesCredentials(serviceKey);
     const imageSearchApiClient = new ImageSearchAPIClient(credentials);
