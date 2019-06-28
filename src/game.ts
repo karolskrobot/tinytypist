@@ -5,7 +5,8 @@ import {
     renderHintLetter,
     clearAll,
     renderImage,
-    setTheme
+    setTheme,
+    renderPersonImage
 } from './renders';
 import {
     lettersEn
@@ -29,7 +30,12 @@ const newWord = async () => {
     tinyTypist = new TinyTypist(word);
     clearAll();    
     updatePuzzleWord();
-    renderImage('picture', await getBingImageUrl(word, words.categoryName));
+    if (words.categoryName === 'people') {
+        renderImage('picture', await renderPersonImage(word));
+    }
+    else {
+        //renderImage('picture', await getBingImageUrl(word, words.categoryName));
+    }    
 };
 
 document.onkeypress = (e: KeyboardEvent) => {
@@ -40,9 +46,9 @@ document.onkeypress = (e: KeyboardEvent) => {
     }
 };
 
-const processGuess = (letter: string) => {
+const processGuess = async (letter: string) => {
     if (tinyTypist.guess(letter)) {
-        newWord();
+        newWord();        
     }
     updatePuzzleWord();
 };

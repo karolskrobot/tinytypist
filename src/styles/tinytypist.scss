@@ -15,7 +15,6 @@ $shadow: rgba($base-color, .5);
 
 html,
 body {
-    background-color: $deep-background-color;
     color: $base-color;
     text-shadow: 0 0.05rem 0.1rem $shadow;
     height: 100%;
@@ -23,15 +22,105 @@ body {
     padding: 0;
 }
 
-main {
-    display: flex;
-    flex-wrap: wrap;
-    width: 79%;
-    height: 100%;
-    padding: 0;
-    margin: 0 auto;
-    padding-top: 8%;
-    background-color: $background-color;
+@media screen and (orientation: landscape) {
+    main {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+        background-color: $background-color;
+    }
+
+    #container-main {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: stretch;
+        align-content: stretch;
+        height: 100%;
+    }
+
+    #mid {
+        padding-top: 3%;
+        width: 84%;
+    }
+
+    #colors {
+        padding-top: 3%;
+        background-color: $deep-background-color;
+        width: 8%;
+    }
+
+    #categories {
+        padding-top: 3%;
+        background-color: $deep-background-color;
+        width: 8%;
+    }
+
+    .selected {
+        border: 2px solid;
+        border-color: $base-color;
+    }
+    
+    #picture {
+        height: 80vh;
+    }
+    
+    .picture-content {
+        width: auto;
+        height: 65vh;
+        filter: alpha(opacity=80);
+    }
+    
+    #hint {
+        margin-top: auto;
+    }
+    
+    #hint-button {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 12vh;
+        height: 12vh;
+        line-height: 12vh;
+        font-size: 8vh;
+        border-radius: 50%;
+        background-color: $base-color;
+        border: 2vh solid $base-darker;
+        color: white;
+    }
+    
+    .side-button {
+        height: 10vh;
+        width: 10vh;
+        border-radius: 10px;
+    }
+    
+    /* words */
+    #guessing {
+        margin-top: 2rem;
+    }
+    
+    .letter-span {
+        display: inline-block;
+        font-size: 1.8rem;
+        height: 6%;
+        width: 6%;
+        line-height: 1.8rem;
+        margin: 0 0.2rem;
+        text-transform: uppercase;
+        vertical-align: text-top;
+        text-align: center;
+    }
+    
+    #hint-letter-container {
+        margin-top: 2rem;
+        height: 6%;
+        width: 6%;
+        line-height: 1.8rem;
+    }
+
 }
 
 button,
@@ -48,104 +137,20 @@ button:hover {
 .button.category:focus,
 button.category:focus,
 .button.category:hover,
-button.category:hover 
-.button.color:focus,
+button.category:hover .button.color:focus,
 button.color:focus,
 .button.color:hover,
-button.color:hover 
-{
+button.color:hover {
     border: 2px solid;
     border-color: $base-color;
-}
-
-.selected {
-    border: 2px solid;
-    border-color: $base-color;
-}
-
-#colors {
-    position: fixed;
-    right: 2%;
-    top: 6%;
-}
-
-#categories {
-    position: fixed;
-    left: 2%;
-    top: 6%;
-}
-
-#picture {
-    height: 18rem;
-}
-
-.picture-content {
-    width: auto;
-    height: 20rem;
-    filter: alpha(opacity=80);
-}
-
-#hint {
-    position: fixed;
-    bottom: 2%;
-    left: 1%;
-    width: 7rem;
-    height: 7rem;
-    font-size: 4rem;
-    border-radius: 50%;
-    vertical-align: middle;
-    background-color: $base-color;
-    border: 1rem solid $base-darker;
-    color: white;
-}
-
-.side-button {
-    height: 5rem;
-    width: 5em;
-    margin: 0.5rem 1rem 0 1rem;
-    border-radius: 10px;
-}
-
-/* words */
-#guessing {
-    margin-top: 3rem;
-}
-
-.letter-span {
-    display: inline-block;
-    font-size: 6.5rem;
-    height: 6.5rem;
-    width: 6.5rem;
-    line-height: 6.5rem;
-    margin: 0 0.2rem;
-    text-transform: uppercase;
-    vertical-align: text-top;
-    text-align: center;
-}
-
-#hint-letter-container {
-    margin-top: 3rem;
-    height: 6.7rem;
 }
 
 .letter-span-underline {
-    border-bottom: 2px solid $base-color;    
+    border-bottom: 2px solid $base-color;
 }
-
-/* media queries */
-@media (max-width: 600px) {
-    .letter-span {
-        font-size: 1.8rem;
-        height: 2rem;
-        width: 2rem;
-        line-height: 1.8rem;
-    }
-}
-
-/* colors */
 
 #pink {
-    background-color: $pink;    
+    background-color: $pink;
 }
 
 #blue {

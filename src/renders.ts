@@ -34,13 +34,17 @@ const renderImage = (containerId: string, url: string) => {
     clearDivs[containerId];
     let img = new Image();
     img.src = url;
-    img.classList.add('picture-content')
+    img.classList.add('picture-content');
     document.getElementById(containerId).appendChild(img);
+};
+
+const renderPersonImage = (name: string) => {
+    return `./people/${name}.jpg`;
 };
 
 const setTheme = (colorName: string) => {
     clearDivs(['color-variable-holder']);
-    addElement('span', '', 'color-variable-holder', colorName, [])    
-}
+    addElement('span', '', 'color-variable-holder', colorName, []);
+};
 
-export { clearAll, renderHintLetter, renderPuzzleWord, renderImage, setTheme };
+export { clearAll, renderHintLetter, renderPuzzleWord, renderImage, setTheme, renderPersonImage };

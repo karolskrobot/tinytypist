@@ -1,3 +1,3 @@
-const people = ['karol', 'aga', 'rose', 'wieslaw', 'joanna', 'hania', 'szymon', 'kasia'];
+const people = ['karol', 'aga', 'rose', 'asia'];
 
 export { people as default };

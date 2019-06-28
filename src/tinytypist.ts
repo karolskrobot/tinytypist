@@ -3,9 +3,10 @@
 enum HintState {'First' = 1, 'Second' = 2, 'SecondShown' = 3};
 
 class TinyTypist {
-    private guessingIndex: number = 0;
 
+    private guessingIndex: number = 0;
     word: string[];
+    wordString: string;
     guessingWord: string[] = [];    
     guessingLetter: string;
     hintState: HintState = HintState.First;
@@ -14,6 +15,7 @@ class TinyTypist {
         this.word = wordArg.toLowerCase().split('');
         this.guessingWord = this.setGuessingWord();
         this.hintState = HintState.First;
+        this.wordString = this.word.join('');
     }
 
     private setGuessingWord(){
