@@ -34,7 +34,7 @@ const newWord = async () => {
         renderImage('picture', await renderPersonImage(word));
     }
     else {
-        //renderImage('picture', await getBingImageUrl(word, words.categoryName));
+        renderImage('picture', await getBingImageUrl(word, words.categoryName));
     }    
 };
 

@@ -13,8 +13,8 @@ class Words {
         this.animals = animals;
         this.people = people;
         this.toys = toys;
-        this.categoryArray = animals;
-        this.categoryName = 'animals'
+        this.categoryArray = people;
+        this.categoryName = 'people'
     }
 
     setCategory(category: string){
