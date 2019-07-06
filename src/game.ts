@@ -1,8 +1,5 @@
-import {
-    TinyTypist,
-    HintState
-} from './tinytypist';
-import Renderer from './render/renders';
+import TinyTypist from './tinytypist';
+import Renderer from './render/renderer';
 import Words from './words';
 import lettersEn from './word-arrays/letters';
 import PersonImageRenderStrategy from './render/image-render-strategies/person-image-render-strategy';
@@ -13,7 +10,6 @@ let tinyTypist: TinyTypist;
 let words: Words;
 let renderer: Renderer;
 
-const updateHintLetter = () => renderer.renderHintLetter([tinyTypist.guessingLetter], 'hint-letter-container', ['letter-span']);
 const updatePuzzleWord = () => renderer.renderPuzzleWord(tinyTypist.guessingWord, 'guessing', ['letter-span', 'letter-span-underline']);
 
 const initializeGame = async () => {
@@ -44,14 +40,6 @@ const newWord = async () => {
     await renderer.renderImage('picture', strategy);
 };
 
-document.onkeypress = (e: KeyboardEvent) => {
-    let charCode = e.charCode || e.which;
-    let charString = String.fromCharCode(charCode);
-    if (lettersEn.includes(charString.toLowerCase())) {
-        processGuess(charString);
-    }
-};
-
 const processGuess = async (letter: string) => {
     if (tinyTypist.guess(letter)) {
         newWord();
@@ -75,20 +63,13 @@ const addButtonListeners = () => {
             cleanBorders('.color');
             const target = e.target as Element;
             target.classList.add('selected');
-            renderer.setTheme(target.id);
+            //renderer.setTheme(target.id);
         })
     })
 
-    document.getElementById('hint').addEventListener('click', () => {
-        if (tinyTypist.hintState === HintState.First || tinyTypist.hintState === HintState.SecondShown) {
+    document.getElementById('hint').addEventListener('click', () => {        
             tinyTypist.getAudioHint()
-
-            if (tinyTypist.hintState === HintState.First)
-                tinyTypist.hintState = HintState.Second
-        } else if (tinyTypist.hintState === HintState.Second) {
-            updateHintLetter();
-            tinyTypist.hintState = HintState.SecondShown;
-        }
+            tinyTypist.hintState++
     })
 };
 
@@ -96,6 +77,14 @@ const cleanBorders = (buttonClass: string) => {
     Array.from(document.querySelectorAll(buttonClass)).forEach(el => {
         el.classList.remove('selected');
     })
+};
+
+document.onkeypress = (e: KeyboardEvent) => {
+    let charCode = e.charCode || e.which;
+    let charString = String.fromCharCode(charCode);
+    if (lettersEn.includes(charString.toLowerCase())) {
+        processGuess(charString);
+    }
 };
 
 export {

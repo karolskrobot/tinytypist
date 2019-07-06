@@ -31,9 +31,9 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',                            
-                            outputPath: '../images/',
-                            publicPath: './images/',
-                            useRelativePaths: true
+                            outputPath: './../content/images',
+                            publicPath: './content/images/',
+                            //useRelativePaths: true
                         }
                     }
                 ]
@@ -45,9 +45,9 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',                            
-                            outputPath: '../audio/',
-                            publicPath: './audio/',
-                            useRelativePaths: true
+                            outputPath: './../content/audio',
+                            publicPath: './content/audio/',
+                            //useRelativePaths: true
                         }
                     }
                 ]

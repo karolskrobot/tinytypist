@@ -1,5 +1,3 @@
-enum HintState {'First' = 1, 'Second' = 2, 'SecondShown' = 3};
-
 class TinyTypist {
 
     private guessingIndex: number = 0;
@@ -7,12 +5,11 @@ class TinyTypist {
     wordString: string;
     guessingWord: string[] = [];    
     guessingLetter: string;
-    hintState: HintState = HintState.First;
+    hintState: number = 0;
     
     constructor(wordArg: string) {        
         this.word = wordArg.toLowerCase().split('');
-        this.guessingWord = this.setGuessingWord();
-        this.hintState = HintState.First;
+        this.guessingWord = this.setGuessingWord();        
         this.wordString = this.word.join('');
     }
 
@@ -43,16 +40,16 @@ class TinyTypist {
 
         if (this.guessingIndex > this.word.length - 1)
             return true;
-
+            
         if (this.word[this.guessingIndex].toLowerCase() === letter.toLowerCase()) {
             this.guessingIndex++;
-            this.hintState = HintState.First;
+            this.hintState = 0;
         }
 
         this.guessingWord = this.setGuessingWord()
-        
+                
         return false;                  
     }
 }
 
-export { TinyTypist, HintState };
+export { TinyTypist as default };

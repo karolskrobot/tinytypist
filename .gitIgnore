@@ -1,6 +1,5 @@
 node_modules
 src/api-keys.ts
-public/audio
-public/images
+public/content
 public/scripts
 built

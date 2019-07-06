@@ -6,7 +6,6 @@ $yellow: rgba(255, 239, 17, 0.8);
 $brown: rgba(109, 45, 8, 0.8);
 $red: rgba(233, 25, 25, 0.8);
 $purple: rgba(145, 32, 107, 0.8);
-$transparent: rgba(255, 255, 255, 0);
 
 $base-color: $pink;
 $background-color: lighten($base-color, 30%);
@@ -92,7 +91,8 @@ body {
         width: 12vh;
         height: 12vh;        
         border-radius: 50%;
-        background-color: $base-color;        
+        background-color: $base-color;
+        border: 1vh solid $base-darker;
         color: white;
     }
 
@@ -100,7 +100,7 @@ body {
         line-height: 8vh;
         font-size: 8vh;        
         font-weight: bolder;
-        padding-top: 1.3vh;
+        padding-top: 0.7vh;
     }
 
     #next-button {
@@ -141,16 +141,14 @@ button:active,
 button:focus,
 .button:hover,
 button:hover {
-    border: 2px solid;
-    border-color: $transparent;
+    border: none;
     outline: none;
 }
 
 .button.category:focus,
 button.category:focus,
 .button.category:hover,
-button.category:hover,
-.button.color:focus,
+button.category:hover .button.color:focus,
 button.color:focus,
 .button.color:hover,
 button.color:hover {
@@ -211,7 +209,7 @@ button.color:hover {
     background-size: 100%;
 }
 
-#numbers {    
+#numbers {
     background: url('../images/numbers.jpg') no-repeat top left;
     background-size: 100%;
 }
