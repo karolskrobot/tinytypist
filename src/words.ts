@@ -1,17 +1,22 @@
-import animals from './word-arrays/animals';
+import animals from '../src/word-arrays/animals';
 import people from './word-arrays/names';
 import toys from './word-arrays/toys';
 import numbers from './word-arrays/numbers';
 
 class Words {
-    animals: string[];
-    people: string[];
-    toys: string[];
-    numbers: string[];
-    categoryName: string;
-    categoryArray: string[];
+    private animals: string[];
 
-    constructor() {
+    private people: string[];
+
+    private toys: string[];
+
+    private numbers: string[];    
+
+    private categoryArray: string[];
+
+    public categoryName: string;
+
+    public constructor() {
         this.animals = animals;
         this.people = people;
         this.toys = toys;
@@ -20,16 +25,15 @@ class Words {
         this.categoryName = 'people'
     }
 
-    setCategory(category: string){
-        console.log(category);        
-        this.categoryArray = this[category];
+    public setCategory(category: string): void{
+        this.categoryArray = this[category]
         this.categoryName = category;
     }
 
-    getWord() {
-        let min = 0;
-        let max = this.categoryArray.length - 1;
-        let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    public getWord(): string {
+        const min = 0;
+        const max = this.categoryArray.length - 1;
+        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
         return this.categoryArray[randomNumber];
     }
 }

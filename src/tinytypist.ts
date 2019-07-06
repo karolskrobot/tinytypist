@@ -1,54 +1,58 @@
 class TinyTypist {
 
-    private guessingIndex: number = 0;
-    word: string[];
-    wordString: string;
-    guessingWord: string[] = [];    
-    guessingLetter: string;
-    hintState: number = 0;
-    
-    constructor(wordArg: string) {        
+    public guessingIndex: number = 0;
+
+    public word: string[];
+
+    public wordString: string;
+
+    public guessingWord: string[] = [];
+
+    public guessingLetter: string;
+    public hintState: number = 0;
+
+    public constructor(wordArg: string) {
         this.word = wordArg.toLowerCase().split('');
-        this.guessingWord = this.setGuessingWord();        
+        this.guessingWord = this.setGuessingWord();
         this.wordString = this.word.join('');
     }
 
-    private setGuessingWord(){
+    private setGuessingWord(): string[] {
 
         this.guessingWord = [];
 
-        this.word.forEach((e, i) => {
-            if(this.guessingIndex <= i ){
-                this.guessingWord.push('')
+        this.word.forEach((e, i): void => {
+            if (this.guessingIndex <= i) {
+                this.guessingWord.push('');
+            } else {
+                this.guessingWord.push(e);
             }
-            else{
-                this.guessingWord.push(e)
-            }            
         });
 
         return this.guessingWord;
     }
-      
-    getAudioHint() {        
+
+    public getAudioHint(): void {
         this.guessingLetter = this.word[this.guessingIndex];
 
         const sound = new Audio(`./audio/${this.word[this.guessingIndex]}.mp3`);
-        sound.play();        
+        sound.play();
     }
 
-    guess(letter: string) {        
+    public guess(letter: string): boolean {
 
-        if (this.guessingIndex > this.word.length - 1)
+        if (this.guessingIndex > this.word.length - 1) {
             return true;
-            
+        }
+
         if (this.word[this.guessingIndex].toLowerCase() === letter.toLowerCase()) {
-            this.guessingIndex++;
+            this.guessingIndex += 1;
             this.hintState = 0;
         }
 
-        this.guessingWord = this.setGuessingWord()
-                
-        return false;                  
+        this.guessingWord = this.setGuessingWord();
+
+        return false;
     }
 }
 
