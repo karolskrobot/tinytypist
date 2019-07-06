@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var lettersEn = [
+const lettersEn = [
     'a',
     'b',
     'c',
@@ -28,4 +26,4 @@ var lettersEn = [
     'y',
     'z'
 ];
-exports.lettersEn = lettersEn;
+export { lettersEn as default };

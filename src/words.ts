@@ -1,11 +1,13 @@
-import animals from './animals';
-import people from './people';
-import toys from './toys';
+import animals from './word-arrays/animals';
+import people from './word-arrays/names';
+import toys from './word-arrays/toys';
+import numbers from './word-arrays/numbers';
 
 class Words {
     animals: string[];
     people: string[];
-    toys: string[];    
+    toys: string[];
+    numbers: string[];
     categoryName: string;
     categoryArray: string[];
 
@@ -13,6 +15,7 @@ class Words {
         this.animals = animals;
         this.people = people;
         this.toys = toys;
+        this.numbers = numbers;
         this.categoryArray = people;
         this.categoryName = 'people'
     }

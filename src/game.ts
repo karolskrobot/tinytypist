@@ -1,26 +1,24 @@
-import {TinyTypist, HintState }from './tinytypist';
-import Words from './locales/words';
-import {    
-    renderPuzzleWord,
-    renderHintLetter,
-    clearAll,
-    renderImage,
-    setTheme,
-    renderPersonImage
-} from './renders';
 import {
-    lettersEn
-} from './locales/letters';
-import getBingImageUrl from './bing-images';
+    TinyTypist,
+    HintState
+} from './tinytypist';
+import Renderer from './render/renders';
+import Words from './words';
+import lettersEn from './word-arrays/letters';
+import PersonImageRenderStrategy from './render/image-render-strategies/person-image-render-strategy';
+import FromApiImageRenderStrategy from './render/image-render-strategies/from-api-render-strategy';
+import NumberRenderStrategy from './render/image-render-strategies/number-render-strategy';
 
 let tinyTypist: TinyTypist;
 let words: Words;
+let renderer: Renderer;
 
-const updateHintLetter = () => renderHintLetter([tinyTypist.guessingLetter], 'hint-letter-container', ['letter-span']);
-const updatePuzzleWord = () => renderPuzzleWord(tinyTypist.guessingWord, 'guessing', ['letter-span', 'letter-span-underline']);
+const updateHintLetter = () => renderer.renderHintLetter([tinyTypist.guessingLetter], 'hint-letter-container', ['letter-span']);
+const updatePuzzleWord = () => renderer.renderPuzzleWord(tinyTypist.guessingWord, 'guessing', ['letter-span', 'letter-span-underline']);
 
 const initializeGame = async () => {
     words = new Words();
+    renderer = new Renderer();
     addButtonListeners();
     await newWord();
 };
@@ -28,14 +26,22 @@ const initializeGame = async () => {
 const newWord = async () => {
     const word = words.getWord()
     tinyTypist = new TinyTypist(word);
-    clearAll();    
+    renderer.clearAll();
     updatePuzzleWord();
-    if (words.categoryName === 'people') {
-        renderImage('picture', await renderPersonImage(word));
+    let strategy: ImageRenderStrategy;
+    switch (words.categoryName) {
+        case 'people':
+            strategy = new PersonImageRenderStrategy(word)
+            break;        
+        case 'toys':
+            strategy = new FromApiImageRenderStrategy(`${word}+toy+`, words.categoryName)
+            break;
+        default:
+            strategy = new FromApiImageRenderStrategy(word, words.categoryName)
+            break;
     }
-    else {
-        renderImage('picture', await getBingImageUrl(word, words.categoryName));
-    }    
+
+    await renderer.renderImage('picture', strategy);
 };
 
 document.onkeypress = (e: KeyboardEvent) => {
@@ -48,7 +54,7 @@ document.onkeypress = (e: KeyboardEvent) => {
 
 const processGuess = async (letter: string) => {
     if (tinyTypist.guess(letter)) {
-        newWord();        
+        newWord();
     }
     updatePuzzleWord();
 };
@@ -69,7 +75,7 @@ const addButtonListeners = () => {
             cleanBorders('.color');
             const target = e.target as Element;
             target.classList.add('selected');
-            setTheme(target.id);            
+            renderer.setTheme(target.id);
         })
     })
 
@@ -77,10 +83,9 @@ const addButtonListeners = () => {
         if (tinyTypist.hintState === HintState.First || tinyTypist.hintState === HintState.SecondShown) {
             tinyTypist.getAudioHint()
 
-            if(tinyTypist.hintState === HintState.First)
+            if (tinyTypist.hintState === HintState.First)
                 tinyTypist.hintState = HintState.Second
-        }
-        else if (tinyTypist.hintState === HintState.Second) {
+        } else if (tinyTypist.hintState === HintState.Second) {
             updateHintLetter();
             tinyTypist.hintState = HintState.SecondShown;
         }
@@ -89,7 +94,7 @@ const addButtonListeners = () => {
 
 const cleanBorders = (buttonClass: string) => {
     Array.from(document.querySelectorAll(buttonClass)).forEach(el => {
-        el.classList.remove('selected');        
+        el.classList.remove('selected');
     })
 };
 

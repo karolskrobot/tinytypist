@@ -1,100 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <link rel="icon" href="images/favicon.ico" />
 
-        <title>TinyTypist</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="images/favicon.ico" />
 
-        <!-- Bootstrap CSS -->
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-        />
-        <!-- Custom CSS -->
-        <link rel="stylesheet" type="text/css" href="styles/tinytypist.css" />
-    </head>
+    <title>TinyTypist</title>
 
-    <body>
-        <script>
-            //@ts-ignore
-            screen.lockOrientation('landscape');
-        </script>
-        <main>
-            <div id="container-main">
-                <div id="categories" class=" text-center">
-                    <div>
-                        <button
-                            id="animals"
-                            class="side-button category"
-                        ></button>
-                    </div>
-                    <div>
-                        <button
-                            id="people"
-                            class="side-button category"
-                        ></button>
-                    </div>
-                    <div>
-                        <button id="toys" class="side-button category"></button>
-                    </div>
-                    <div id="hint">
-                        <button id="next-button">&#9656;</button>
-                        <button id="hint-button">?</button>
-                    </div>
-                    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="styles/tinytypist.css" />
+</head>
+
+<body>
+    <script>
+        //@ts-ignore
+        screen.lockOrientation('landscape');
+    </script>
+    <main>
+        <div id="container-main">
+            <div id="categories" class=" text-center">
+                <div>
+                    <button id="animals" class="side-button category"></button>
                 </div>
-                <div id="mid" class=" text-center">
-                    <div id="picture"></div>
-                    <div id="word-container">
-                        <div id="word" class="d-none"> </div>
-                    </div>
-                    <div id="guessing"> </div>
+                <div>
+                    <button id="people" class="side-button category"></button>
                 </div>
-                <div id="colors" class=" text-center">
-                    <div>
-                        <button id="red" class="side-button color"></button>
-                    </div>
-                    <div>
-                        <button id="orange" class="side-button color"></button>
-                    </div>
-                    <div>
-                        <button id="pink" class="side-button color"></button>
-                    </div>
-                    <div>
-                        <button id="yellow" class="side-button color"></button>
-                    </div>
-                    <div>
-                        <button id="brown" class="side-button color"></button>
-                    </div>
-                    <div>
-                        <button id="green" class="side-button color"></button>
-                    </div>
-                    <div>
-                        <button id="blue" class="side-button color"></button>
-                    </div>
-                    <div>
-                        <button id="purple" class="side-button color"></button>
-                    </div>
-                    <div id="color-variable-holder"></div>
+                <div>
+                    <button id="toys" class="side-button category"></button>
                 </div>
+                <div>
+                    <button id="numbers" class="side-button category"></button>
+                </div>
+                <div id="hint">
+                    <button id="next-button">&#9656;</button>
+                    <button id="hint-button">?</button>
+                </div>
+
             </div>
-        </main>
+            <div id="mid" class=" text-center">
+                <div id="picture"></div>
+                <div id="word-container">
+                    <div id="word" class="d-none"> </div>
+                </div>
+                <div id="guessing"> </div>
+            </div>
+            <div id="colors" class=" text-center">
+                <div>
+                    <button id="red" class="side-button color"></button>
+                </div>
+                <div>
+                    <button id="orange" class="side-button color"></button>
+                </div>
+                <div>
+                    <button id="pink" class="side-button color"></button>
+                </div>
+                <div>
+                    <button id="yellow" class="side-button color"></button>
+                </div>
+                <div>
+                    <button id="brown" class="side-button color"></button>
+                </div>
+                <div>
+                    <button id="green" class="side-button color"></button>
+                </div>
+                <div>
+                    <button id="blue" class="side-button color"></button>
+                </div>
+                <div>
+                    <button id="purple" class="side-button color"></button>
+                </div>
+                <div id="color-variable-holder"></div>
+            </div>
+        </div>
+    </main>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js"></script>
-        <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"
-        ></script>
-        <script src="scripts/bundle.js"></script>
-    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="scripts/bundle.js"></script>
+</body>
+
 </html>

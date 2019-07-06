@@ -1,4 +1,4 @@
-import bingApiKey from './api-keys';
+import bingApiKey from '../api-keys';
 
 'use strict';
 const ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
@@ -28,4 +28,4 @@ async function getBingImageUrl(word: string, category: string) {
     return url;
 };
 
-export {getBingImageUrl as default};
+export {getBingImageUrl};

@@ -1,5 +1,3 @@
-
-
 enum HintState {'First' = 1, 'Second' = 2, 'SecondShown' = 3};
 
 class TinyTypist {
