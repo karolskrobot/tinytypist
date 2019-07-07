@@ -26,7 +26,7 @@ const newWord = async (): Promise<void> => {
     let strategy: ImageRenderStrategy;
     switch (words.categoryName) {
         case 'animals':
-            strategy = new FromApiImageRenderStrategy(`${word}`);
+            strategy = new FromApiImageRenderStrategy(word);
             break;
         case 'people':
             strategy = new PersonImageRenderStrategy(word);

@@ -7,7 +7,7 @@ class PersonImageRenderStrategy implements ImageRenderStrategy {
 
     public renderImage(containerId: string): void {
         const img = new Image();
-        img.src = `./../../../content/images/${this.name}.jpg`;
+        img.src = `../content/images/${this.name}.jpg`;
         img.classList.add('picture-content');
         document.getElementById(containerId).appendChild(img);
     }
