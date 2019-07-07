@@ -1,13 +1,9 @@
 class TinyTypist {
 
     public guessingIndex: number = 0;
-
     public word: string[];
-
     public wordString: string;
-
     public guessingWord: string[] = [];
-
     public guessingLetter: string;
     public hintState: number = 0;
 
@@ -35,7 +31,7 @@ class TinyTypist {
     public getAudioHint(): void {
         this.guessingLetter = this.word[this.guessingIndex];
 
-        const sound = new Audio(`./audio/${this.word[this.guessingIndex]}.mp3`);
+        const sound = new Audio(`./content/audio/${this.word[this.guessingIndex]}.mp3`);
         sound.play();
     }
 

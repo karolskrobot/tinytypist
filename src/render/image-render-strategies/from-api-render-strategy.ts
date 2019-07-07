@@ -1,20 +1,19 @@
-import { getBingImageUrl } from './../bing-images';
+import getBingImageUrl from '../bing-images';
 
 class FromApiImageRenderStrategy implements ImageRenderStrategy {
     private name: string;
     private category: string;
 
-    constructor(name: string, category: string) {
+    public constructor(name: string, category = '') {
         this.name = name;
         this.category = category;
     }
 
-    async renderImage(containerId: string) {
-        let img = new Image();
+    public async renderImage(containerId: string): Promise<void> {
+        const img = new Image();
         img.src = await getBingImageUrl(this.name, this.category);
         img.classList.add('picture-content');
         document.getElementById(containerId).appendChild(img);
-        return getBingImageUrl(this.name, this.category);
     }
 }
 

@@ -1,67 +1,64 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
 
 module.exports = {
-    entry: "./src/index.ts",
+    entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'public/scripts'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
-    devtool: "source-map",
+    devtool: 'source-map',
     module: {
         rules: [{
-                test: /\.tsx?$/,
-                loader: "awesome-typescript-loader"
+            test: /\.tsx?$/,
+            loader: 'awesome-typescript-loader',
+        },
+        {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
             },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
-                }
-            },
-            {
-                test: /\.(scss|sass|css)$/,
-                exclude: /node_modules/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
-            },
-            {
-                test: /\.(png|jpe?g|gif|svg)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',                            
-                            outputPath: './../content/images',
-                            publicPath: './content/images/',
-                            //useRelativePaths: true
-                        }
-                    }
-                ]
-            }, 
-            {
-                test: /\.(mp3|wav)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',                            
-                            outputPath: './../content/audio',
-                            publicPath: './content/audio/',
-                            //useRelativePaths: true
-                        }
-                    }
-                ]
-            }, 
-        ]
+        },
+        {
+            test: /\.(scss|sass|css)$/,
+            exclude: /node_modules/,
+            use: ['style-loader', 'css-loader', 'sass-loader'],
+        },
+        {
+            test: /\.(png|jpe?g|gif|svg)$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: './../content/images',
+                    publicPath: './content/images/',
+                    // useRelativePaths: true
+                },
+            }],
+        },
+        {
+            test: /\.(mp3|wav)$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: './../content/audio',
+                    publicPath: './content/audio/',
+                    // useRelativePaths: true
+                },
+            }],
+        },
+        ],
     },
     resolve: {
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js'],
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
-        publicPath: '/scripts/'
+        publicPath: '/scripts/',
     },
     node: {
-        fs: "empty"
-    }
+        fs: 'empty',
+    },
 };

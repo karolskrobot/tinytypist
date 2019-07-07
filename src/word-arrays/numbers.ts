@@ -8,6 +8,6 @@ const numbers = [
     '7',
     '8',
     '9',
-    '0'
+    '0',
 ];
 export { numbers as default };

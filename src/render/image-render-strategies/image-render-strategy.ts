@@ -1,3 +1,3 @@
 interface ImageRenderStrategy {
-    renderImage(containerId: string) : void;
+    renderImage(containerId: string): void;
 }

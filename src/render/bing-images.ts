@@ -1,31 +1,34 @@
+import ImageSearchAPIClient from 'azure-cognitiveservices-imagesearch';
+import { Images } from 'azure-cognitiveservices-imagesearch/lib/models';
+import { CognitiveServicesCredentials } from 'ms-rest-azure';
 import bingApiKey from '../api-keys';
 
-'use strict';
-const ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+async function getBingImageUrl(word: string, category = ''): Promise<string> {
 
-async function getBingImageUrl(word: string, category: string) {
-    
-    const serviceKey = bingApiKey;    
-    const searchTerm = `$${word}+transparent+background`;
-   
+    const serviceKey = bingApiKey;
+    let searchTerm: string;
+
+    if (category === '') {
+        searchTerm = `${word}+transparent+background`;
+    } else {
+        searchTerm = `${word}+${category}+transparent+background`;
+    }
+
     const credentials = new CognitiveServicesCredentials(serviceKey);
     const imageSearchApiClient = new ImageSearchAPIClient(credentials);
 
-    const sendQuery = async () => {
-        return await imageSearchApiClient.imagesOperations.search(searchTerm);
-    };
-    
+    const sendQuery = async (): Promise<Images> => imageSearchApiClient
+        .imagesOperations.search(searchTerm);
+
     const url = sendQuery()
-        .then(response => {            
-            const max = 30
-            const min = 0
+        .then((response): string => {
+            const max = 30;
+            const min = 0;
             const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
             return response.value[randomNumber].contentUrl;
-        })
-        .catch(err => console.log(err));
+        });
 
     return url;
-};
+}
 
-export {getBingImageUrl};
+export { getBingImageUrl as default };

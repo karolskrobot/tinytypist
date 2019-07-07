@@ -1,26 +1,25 @@
 class DomHelper {
 
-    addElement = (
+    public addElement = (
         tag: string,
         textContent: string,
         parent: string,
         id: string,
-        classes: string[]
-        ) => 
-        {
-            const el = document.createElement(tag);
-            el.textContent = textContent;
-            document.getElementById(parent).appendChild(el);
-            if (id) {
-                el.id = id;
-            }
-            classes.forEach((c) => {
-                el.classList.add(c)
-            })
-        };
-    
-    clearDivs = (domsArray: string[]) => {
-        domsArray.forEach(d => {
+        classes: string[],
+    ): void => {
+        const el = document.createElement(tag);
+        el.textContent = textContent;
+        document.getElementById(parent).appendChild(el);
+        if (id) {
+            el.id = id;
+        }
+        classes.forEach((c): void => {
+            el.classList.add(c);
+        });
+    };
+
+    public clearDivs = (domsArray: string[]): void => {
+        domsArray.forEach((d): void => {
             if (document.getElementById(d)) {
                 while (document.getElementById(d).firstChild) {
                     document
@@ -29,7 +28,7 @@ class DomHelper {
                 }
             }
         });
-    };    
+    };
 }
 
-export {DomHelper as default}
+export { DomHelper as default };

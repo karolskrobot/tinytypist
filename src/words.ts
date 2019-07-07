@@ -1,17 +1,13 @@
-import animals from '../src/word-arrays/animals';
+import animals from './word-arrays/animals';
 import people from './word-arrays/names';
 import toys from './word-arrays/toys';
 import numbers from './word-arrays/numbers';
 
 class Words {
     private animals: string[];
-
     private people: string[];
-
     private toys: string[];
-
-    private numbers: string[];    
-
+    private numbers: string[];
     private categoryArray: string[];
 
     public categoryName: string;
@@ -22,11 +18,11 @@ class Words {
         this.toys = toys;
         this.numbers = numbers;
         this.categoryArray = people;
-        this.categoryName = 'people'
+        this.categoryName = 'people';
     }
 
     public setCategory(category: string): void{
-        this.categoryArray = this[category]
+        this.categoryArray = this[category];
         this.categoryName = category;
     }
 

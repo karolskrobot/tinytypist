@@ -24,6 +24,6 @@ const lettersEn = [
     'w',
     'x',
     'y',
-    'z'
+    'z',
 ];
 export { lettersEn as default };

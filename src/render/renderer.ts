@@ -1,30 +1,30 @@
-import DomHelper from './dom-helper'
+import DomHelper from './dom-helper';
 
 class Renderer {
 
     private domHelper: DomHelper;
 
-    constructor() {
-        this.domHelper = new DomHelper();        
+    public constructor() {
+        this.domHelper = new DomHelper();
     }
 
-    clearAll = () => this.domHelper.clearDivs(['picture', 'word', 'guessing']);
-   
-    renderPuzzleWord = (
+    public clearAll = (): void => this.domHelper.clearDivs(['picture', 'word', 'guessing']);
+
+    public renderPuzzleWord = (
         wordArray: string[],
         divName: string,
-        classes: string[]
-    ) => {
+        classes: string[],
+    ): void => {
         this.domHelper.clearDivs(['guessing']);
-        wordArray.forEach((letter: string) => {
+        wordArray.forEach((letter: string): void => {
             this.domHelper.addElement('span', letter, divName, '', classes);
         });
     };
-          
-    renderImage = (containerId: string, strategy: ImageRenderStrategy) => {
-        this.domHelper.clearDivs[containerId];
+
+    public renderImage = (containerId: string, strategy: ImageRenderStrategy): void => {
+        this.domHelper.clearDivs(['containerId']);
         strategy.renderImage(containerId);
-    };        
+    };
 }
 
 export { Renderer as default };
